@@ -1,0 +1,22 @@
+---
+import { getNanostoresScript } from "@kewka/astro-nanostores/server";
+import { Counter } from "../components/counter";
+import { $count } from "../store";
+
+$count.set(Date.now());
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <Counter client:load />
+
+    <script is:inline set:html={getNanostoresScript()} />
+  </body>
+</html>
